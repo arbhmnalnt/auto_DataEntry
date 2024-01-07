@@ -45,14 +45,8 @@ for index, row in excel_data.iloc[30:].iterrows():
 
     # check if service is exist in first letters then skip
 
-    # click create new letter
     driver.find_element(By.ID, "ContentPlaceHolder1_btnsearch").click()
     # wait if user may stop the programm for any cause 
-    print(f"naid => {naid}")
-    # user_input = input("Press 'Enter' to continue or 'q' to skip to following: ")
-    # if user_input.lower() == 'q':
-    #     print("skipping the script as per user input.")
-    #     continue  # Exit the loop and end the script
     
     # start make new letter -> 
     driver.find_element(By.ID, 'ContentPlaceHolder1_LinkButton1').click()
@@ -76,6 +70,12 @@ for index, row in excel_data.iloc[30:].iterrows():
     # cost
     driver.find_element(By.ID, 'ContentPlaceHolder1_txtFees').clear()
     driver.find_element(By.ID, 'ContentPlaceHolder1_txtFees').send_keys(str(cost))
+
+    # add ability to loop throw services and for after the first service select then select the entity as in excell
+    # also this selected is within some rules like 
+    ##  دائما اختار مقطعية على الصدر اولا  اذا كانت موجودة ضمن الخدمات
+    ## فى حالة اى خطا او مشكلة  التوقف  وارسال تنبيه بضرورة التددخل البشرى ثم الاستكمال
+    ##
 
     user_input = input("Press 'Enter' to continue or 'q' to skip to following: ")
     if user_input.lower() == 'q':
